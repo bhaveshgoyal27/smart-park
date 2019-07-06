@@ -1,0 +1,10 @@
+{% extends "user/base.html" %}
+
+{% block content %}
+	{% for det in detail %}
+        <img class="rounded-circle article-img" src="{{ det.image.url }}"><br>
+        <h3>{{det.user}}</h3>
+      	<a href="{% url 'book' det.id %}">BOOK YOUR SPOT</a><br>
+     {% endfor %}
+
+{% endblock content %}
