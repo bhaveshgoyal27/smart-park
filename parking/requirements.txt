@@ -1,0 +1,4 @@
+Python -3.7
+django -2.1
+crispy forms
+pillow
