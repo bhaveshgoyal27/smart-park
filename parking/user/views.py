@@ -27,14 +27,7 @@ def get_loc(request):
         if b_form.is_valid():
             b_form.save()
             car_number = b_form.cleaned_data.get('car_number')
-            in_time = b_form.cleaned_data.get('in_time')
-            out_time = b_form.cleaned_data.get('out_time')
-            time=out_time - in_time
-            if time/3600 == time//3600:
-                time=time//3600
-            else:
-                time=time//3600
-            time+=1
+            time = b_form.cleaned_data.get('no_of_hours')
             det=Profile.objects.all()
             g=geocoder.ip('me')
             a=g.latlng[0]
@@ -50,57 +43,16 @@ def get_loc(request):
                 messages.success(request, f'THERE ARE NO PARKING SPOTS NEAR YOU AT THE TIME')
                 return redirect('base')
         else:
-            return HttpResponse("bh")
+            b_form = BookingForm()
+            context = {'b_form': b_form}
+            return render(request, 'user/get_loc.html', context)
     else:
         b_form = BookingForm()
     context = {
         'b_form': b_form
     }
     return render(request, 'user/get_loc.html', context)
-    """else:
-            return HttpResponse("bh")
-        time=out_time - in_time
-        if time/3600 == time//3600:
-            time=time//3600
-        else:
-            time=time//3600
-            time+=1
-        det=Profile.objects.all()
-        g=geocoder.ip('me')
-        a=g.latlng[0]
-        b=g.latlng[1]
-        d={}
-        m=[]
-        for i in det:
-            if distance(i.lat,i.lng,a,b)<=5:
-                d[i]=distance(i.lat,i.lng,a,b)
-        if d :
-             return render(request, 'user/detail.html', {'detail': d,'car':car_number,'time':time})
-        else:
-            messages.success(request, f'THERE ARE NO PARKING SPOTS NEAR YOU AT THE TIME')
-            return redirect('base')
-    else:
-        b_form = BookingForm()
-    context = {
-        'b_form': b_form
-    }
-    return render(request, 'user/get_loc.html', context)"""
-    """det=Profile.objects.all()
-    g=geocoder.ip('me')
-    a=g.latlng[0]
-    b=g.latlng[1]
-    d={}
-    m=[]
-    for i in det:
-        if distance(i.lat,i.lng,a,b)<=5:
-            d[i]=distance(i.lat,i.lng,a,b)
-    if d :
-         return render(request, 'user/detail.html', {'detail': d})
-    else:
-        return HttpResponse ("THERE ARE NO PARKING SPOTS NEAR YOU ")
-    return render(request, 'user/detail.html', {'detail': d})"""
-
-
+    
 
 def register(request):
     if request.method == 'POST':

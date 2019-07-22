@@ -64,23 +64,26 @@
 				</ul>-->
 
 			</div>
+
              <div class="nav navbar-nav navbar-right">
 
+             	<ul>
               {% if user.is_authenticated %}
 
-                <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                <li><a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
 
-                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a></li>
 
               {% else %}
 
-              	<a class="nav-item nav-link" href="{% url 'get_loc' %}">Park your car</a>
+              	<li><a class="nav-item nav-link" href="{% url 'get_loc' %}">Park your car</a>
 
                 <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
 
-                <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                <a class="nav-item nav-link" href="{% url 'register' %}">Register</a></li>
 
               {% endif %}
+          </ul>
 
             </div>
 
@@ -124,7 +127,7 @@
 
 		<div class="col-lg-4 container">
 
-			<!--<img src="#" width="1140" height="600"></img>-->
+			<img src="x.png" width="1140" height="600"></img>
 
 		</div>
 

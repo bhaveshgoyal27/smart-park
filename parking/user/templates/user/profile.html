@@ -3,12 +3,14 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <div class="content-section">
 
       <div class="media">
 
-        <img class="rounded-circle account-img" src={{ user.profile.image.url }}>
+        <img class="w3-circle" src={{ user.profile.image.url }} alt="Car"> 
+        <!--<img class="rounded-circle account-img" src={{ user.profile.image.url }}>-->
 
         <div class="media-body">
 
@@ -16,8 +18,8 @@
 
           <p class="text-secondary">{{ user.email }}</p>
           <p class="text-secondary">{{ user.cars }}</p>
-          <p class="text-secondary">{{ user.profile.lat }}</p>
-          <p class="text-secondary">{{ user.profile.lng }}</p>
+          <p class="text-secondary">Latitude  :{{ user.profile.lat }}</p>
+          <p class="text-secondary">Longitude :{{ user.profile.lng }}</p>
 
         </div>
 

@@ -8,20 +8,20 @@ from .models import Profile,Viewer
 class UserRegisterForm(UserCreationForm):
 
     email = forms.EmailField()
+    cctvcode=forms.CharField(max_length=10)
 
     class Meta:
 
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username', 'email','cctvcode', 'password1', 'password2']
 
 class BookingForm(forms.ModelForm):
 
-    in_time=forms.IntegerField()
-    out_time=forms.IntegerField()
+    no_of_hours=forms.IntegerField()
     car_number=forms.CharField(max_length=10)
     class Meta:
         model = Viewer
-        fields=['car_number','in_time','out_time']
+        fields=['car_number','no_of_hours']
 
 
 
@@ -30,7 +30,6 @@ class BookingForm(forms.ModelForm):
 class UserUpdateForm(forms.ModelForm):
 
     email = forms.EmailField()
-
     class Meta:
 
         model = User

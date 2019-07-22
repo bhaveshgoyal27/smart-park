@@ -1,6 +1,7 @@
 {% extends "user/base.html" %}
 
 {% block content %}
+<h3>You can park your car {{car}} in any of these locations</h3>
 	{% for det in detail %}
         <img class="rounded-circle article-img" src="{{ det.image.url }}"><br>
         <h3>{{det.user}}</h3>
