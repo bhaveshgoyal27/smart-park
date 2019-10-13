@@ -20,9 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ttuq0dy)!a5kw!9o*n6go@qqww7^298&a$7mj*(7f43^ezg1tm'
+SECRET_KEY = 'w0@k+x!gadj9b6q$-i5y=e!05xe*0_k@-w^!x6%sc_*h+)7a8_'
 
-# SECURITY WARNING: don't run withbbgh debug turned on in production!
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -120,6 +120,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+"""STATICFILES_DIRS = ( 
+      'C:/Users/bhavs/desktop/parking/static/',  
+)"""
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
@@ -133,5 +137,3 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'base'
 
 LOGIN_URL = 'login'
-
-

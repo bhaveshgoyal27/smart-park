@@ -1,3 +1,4 @@
+{% load static%}
 <!DOCTYPE html>
 
 <html lang="en">
@@ -11,6 +12,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
 
 
 
@@ -64,26 +67,22 @@
 				</ul>-->
 
 			</div>
-
              <div class="nav navbar-nav navbar-right">
-
-             	<ul>
               {% if user.is_authenticated %}
-
+  				<ul>
                 <li><a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
 
                 <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a></li>
-
+            </ul>
               {% else %}
-
+              <ul>
               	<li><a class="nav-item nav-link" href="{% url 'get_loc' %}">Park your car</a>
 
                 <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
 
-                <a class="nav-item nav-link" href="{% url 'register' %}">Register</a></li>
-
+                <a class="nav-item nav-link" href="{% url 'register' %}">Register</a></li></ul>
+                <p>   </p>
               {% endif %}
-          </ul>
 
             </div>
 
@@ -111,9 +110,9 @@
 
           {% endif %}
 
-          {% block content %}{% endblock %}
-
         </div>
+
+        {% block content %}
 
 	<div class="container">
 
@@ -127,14 +126,14 @@
 
 		<div class="col-lg-4 container">
 
-			<img src="x.png" width="1140" height="600"></img>
+			<!--<img src="#" width="1140" height="600"></img>-->
 
 		</div>
 
 	</div>
 
 	</div>
-
+{% endblock %}
 
 
 </body>

@@ -13,7 +13,7 @@ class UserRegisterForm(UserCreationForm):
     class Meta:
 
         model = User
-        fields = ['username', 'email','cctvcode', 'password1', 'password2']
+        fields = ['username', 'password1', 'password2','cctvcode', 'email']
 
 class BookingForm(forms.ModelForm):
 
@@ -22,18 +22,6 @@ class BookingForm(forms.ModelForm):
     class Meta:
         model = Viewer
         fields=['car_number','no_of_hours']
-
-
-
-
-
-class UserUpdateForm(forms.ModelForm):
-
-    email = forms.EmailField()
-    class Meta:
-
-        model = User
-        fields = ['username', 'email']
 
 
 

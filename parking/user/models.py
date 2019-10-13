@@ -18,8 +18,10 @@ class Profile(models.Model):
     lng = models.FloatField(default=g.latlng[1])
     phno=models.IntegerField(default='0')
     cctvcode=models.CharField(max_length=10, default=0)
-    photage = models.ImageField(default='default.jpg', upload_to='cctv')
-
+    photage = models.ImageField(default='qa.png', upload_to='cctv')
+    carsp = models.IntegerField(default=0)
+    cost = models.IntegerField(default=40)
+    choice= models.CharField(max_length=1,default=0)
 
     def __str__(self):
         return f'{self.user.username} Profile'
@@ -29,6 +31,7 @@ class Profile(models.Model):
     def save(self,*args,**kwargs):
         super().save(*args,**kwargs)
         img = Image.open(self.image.path)
+        img1=Image.open(self.photage.path)
 
         if img.height > 300 or img.width > 300:
 
@@ -38,15 +41,14 @@ class Profile(models.Model):
 
             img.save(self.image.path)
 
-        img = Image.open(self.photage.path)
+        if img1.height > 300 or img1.width > 300:
 
-        if img.height > 300 or img.width > 300:
+            output_size = (224, 224)
 
-            output_size = (300, 300)
+            img1.thumbnail(output_size)
 
-            img.thumbnail(output_size)
+            img1.save(self.photage.path)
 
-            img.save(self.photage.path)
 class Viewer(models.Model):
     car_number = models.CharField(max_length=10, default=0)
     no_of_hours=models.IntegerField(default=0)
