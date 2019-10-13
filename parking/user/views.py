@@ -97,10 +97,20 @@ def check(x):
     model.load_weights("C:\\Users\\bhavs\\Desktop\\final_model_22_july_for_sure.h5")
     #test='C:\\Users\\bhavs\\Desktop\\qa.jpg'
     test=cv2.imread(x)
-    test=cv2.resize(test,(224,224))
-    test=np.reshape(test,[1,224,224,3])
-    a=model.predict(test)
-    return a[0][0]
+    image=test
+    stepSize = 10
+    c=1
+    (w_width, w_height) = (10, 15) # window size
+    for x in range(0, image.shape[1] - w_width , stepSize):
+        for y in range(0, image.shape[0] - w_height, stepSize):
+            window = image[x:x + w_width, y:y + w_height, :]
+            window=cv2.resize(window,(224,224))
+            window=np.reshape(window,[1,224,224,3])
+            a=model.predict(window)
+            b=np.round(a[0][0])
+            if b==1:
+                c+=1
+    return c
 
 def get_loc(request):
     g=geocoder.ip('me')
@@ -110,7 +120,7 @@ def get_loc(request):
     m=[]
     det=Profile.objects.all()
     for i in det:
-        if (distance(i.lat,i.lng,a,b)<=5 and check(i.photage.path)>=0.5):
+        if (distance(i.lat,i.lng,a,b)<=5 and check(i.photage.path)<10):
             d[i]=distance(i.lat,i.lng,a,b)
     if d :
         return render(request, 'user/parkingspots.html', {'detail': d})
